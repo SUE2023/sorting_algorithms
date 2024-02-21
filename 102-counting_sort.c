@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * get_max - Get the maximum value in an array of integers.
- * @array: An array of integers.
- * @size: The size of the array.
- *
- * Return: The maximum integer in the array.
+ * get_max - Gets the maximum value
+ * Description: in an array of integers
+ * @array: An array of integers
+ * @size: The size of the array
+ * Return: The maximum integer in the array
  */
 int get_max(int *array, int size)
 {
@@ -21,16 +21,16 @@ int get_max(int *array, int size)
 }
 
 /**
- * counting_sort - Sort an array of integers in ascending order
- *                 using the counting sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
- *
- * Description: Prints the counting array after setting it up.
+ * counting_sort - Sorts array of integers in ascending order
+ * DEscription: using the counting sort algorithm and prints
+ * 		counting array after setting it up
+ * @array: An array of integers
+ * @size: The size of the array
+ * Return: void
  */
 void counting_sort(int *array, size_t size)
 {
-	int *count, *sorted, max, i;
+	int *counting, *sorted, max, i;
 
 	if (array == NULL || size < 2)
 		return;
@@ -39,30 +39,30 @@ void counting_sort(int *array, size_t size)
 	if (sorted == NULL)
 		return;
 	max = get_max(array, size);
-	count = malloc(sizeof(int) * (max + 1));
-	if (count == NULL)
+	counting = malloc(sizeof(int) * (max + 1));
+	if (counting == NULL)
 	{
 		free(sorted);
 		return;
 	}
 
 	for (i = 0; i < (max + 1); i++)
-		count[i] = 0;
+		counting[i] = 0;
 	for (i = 0; i < (int)size; i++)
-		count[array[i]] += 1;
+		counting[array[i]] += 1;
 	for (i = 0; i < (max + 1); i++)
-		count[i] += count[i - 1];
-	print_array(count, max + 1);
+		counting[i] += counting[i - 1];
+	print_array(counting, max + 1);
 
 	for (i = 0; i < (int)size; i++)
 	{
-		sorted[count[array[i]] - 1] = array[i];
-		count[array[i]] -= 1;
+		sorted[counting[array[i]] - 1] = array[i];
+		counting[array[i]] -= 1;
 	}
 
 	for (i = 0; i < (int)size; i++)
 		array[i] = sorted[i];
 
 	free(sorted);
-	free(count);
+	free(counting);
 }

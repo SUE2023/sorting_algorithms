@@ -21,9 +21,8 @@ void swap_ints(int *a, int *b)
 
 /**
  * hoare_partition - Order a subset of an array of integers
- * description: according to the hoare partition scheme - using
- * 		the last element of the partition as the pivot and
- * 		prints the array after each swap of two elements
+ * description: according to hoare partition scheme -using the last element of
+ * the partition as the pivot and prints array after each swap of two elements
  * @array: The array of integers
  * @size: The size of the array
  * @left: The starting index of the subset to order

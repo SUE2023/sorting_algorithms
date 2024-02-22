@@ -35,10 +35,11 @@ int get_max(int *array, int size)
  */
 void radix_counting_sort(int *array, size_t size, int sig, int *buff)
 {
-	int counting;
+	int counting [10];
 	size_t i;
 
-	counting[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	for (i = 0; i < 10; i++)
+		counting[i] = 0;
 
 	for (i = 0; i < size; i++)
 		counting[(array[i] / sig) % 10] += 1;
@@ -58,9 +59,8 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff)
 
 /**
  * radix_sort - Sorts an array of integers in ascending order
- * Description: using the radix sort algorithm - implementing the LSD
- * 		radix sort algorithm and prints the array after each
- * 		each significant digit increase
+ * Description: using the radix sort algorithm - implementing the LSD radix
+ * sort algorithm and prints the array after each significant digit increase
  * @array: An array of integers
  * @size: The size of the array
  * Return: void

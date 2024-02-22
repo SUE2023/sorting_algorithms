@@ -4,6 +4,8 @@
  */
 
 #include "sort.h"
+#define UP 1
+#define DOWN 0
 
 void swap_ints(int *a, int *b);
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
@@ -40,7 +42,7 @@ void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 {
 	size_t i, jump;
 
-       	jump = seq / 2;
+	jump = seq / 2;
 
 	if (seq > 1)
 	{
@@ -67,10 +69,10 @@ void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
 {
 	size_t cut;
-	char *str;
+	const char *str;
 
-	cut = seq /2;
-	str = (flow == up) ? "UP" : "DOWN";
+	cut = seq / 2;
+	str = (flow == UP) ? "UP" : "DOWN";
 
 	if (seq > 1)
 	{
@@ -87,10 +89,9 @@ void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
 }
 
 /**
- * bitonic_sort - Sort an array of integers in ascending order
- * Description: using the bitonic sort algorithm and Prints the array
- * 		after each swap. Only works for size = 2^k
- * 		where k >= 0 (ie. size equal to powers of 2)
+ * bitonic_sort - Sort an array of integers in ascending order using
+ * Description: the bitonic sort algorithm and Prints the array after each
+ * swap. Only works for size = 2^k where k >= 0 (ie. size equal to powers of 2)
  * @array: An array of integers
  * @size: The size of the array
  * Return: void
